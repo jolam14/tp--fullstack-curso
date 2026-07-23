@@ -18,7 +18,7 @@ const App = () => {
     const value = e.target.value
 
     if (limitCharacter) {
-      if (e.target.value <= limitValue) {
+      if (value <= limitValue) {
         setText(value)
       }
     } 
@@ -29,11 +29,9 @@ const App = () => {
   const handleChangeInputLimit = () => {
     setlimiteCharacter(!limitCharacter)
     const newText = text.slice(0, limitValue)
-    setText(value)
+    setText(newText)
   }
-}
   
-function App() {
   return (
     <main>
       <Header />
@@ -41,7 +39,7 @@ function App() {
        in real-time</h2>
 
       <textarea placeholder="Escribe el texto..."
-      onChance = {(e) => sexText(e.target.value)}
+      onChance = {handleChangeTextarea}
       value={Text}
       ></textarea>
       <div>
@@ -49,7 +47,7 @@ function App() {
           <input 
           type = "checkbox"
           checked = {excludeSpace}
-          onChance = {(e) => setExcludeSpace(!excludeSpace)}
+          onChance = {() => setExcludeSpace(!excludeSpace)}
           />
           excluir espacios
         </label>
@@ -57,11 +55,10 @@ function App() {
             <input 
               type = "checkbox"
               checked = {limitCharacter}
-              onChance = {(e) => setlimiteCharacter(!limitCharacter)}
+              onChance = {handleChangeInputLimit}
           />
           limite de Caracteres
-        </label>
-        {
+        </label> {
         limitCharacter && <input 
         type="number"
         value = {limitValue}
