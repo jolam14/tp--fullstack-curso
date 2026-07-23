@@ -4,7 +4,7 @@ const Header = () => {
       <p>C</p>
       <h1>Character Counter UTN</h1>
     </div>
-    <button>☀</button>
+    <button>☀️/🌙</button>
   </header>
 }
 
