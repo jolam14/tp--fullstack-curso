@@ -3,8 +3,9 @@ import { Header } from "./components/Header.jsx"
 const App = () => {
   const [text, setText] = userState("esto es texto de prueba se puede borrar")
   const [excludeSpace, setExcludeSpace] = useState(false)
+
   const Character = setExcludeSpace ? text.replace(/\s/g,"").length: text.length 
-  const
+  const [limitCharacter]
 }
 
   
@@ -24,8 +25,17 @@ function App() {
           <input 
           type="checkbox"
           checked={excludeSpace}
-
+          onchance {(e) => setExcludeSpace(!excludeSpace)}
           />
+          exluir espacios
+        </label>
+          <label >
+          <input 
+          type="checkbox"
+          checked={limitCharacter}
+          onchance {(e) => setlimiteCharacter(!limitCharacter)}
+          />
+          limite de Caracteres
         </label>
       </div>
     </main>
