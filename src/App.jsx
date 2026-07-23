@@ -18,7 +18,7 @@ const App = () => {
     const value = e.target.value
 
     if (limitCharacter) {
-      if (value <= limitValue) {
+      if (value.length <= limitValue) {
         setText(value)
       }
     } 
@@ -38,7 +38,8 @@ const App = () => {
       <h2>Analyse your text <br />
        in real-time</h2>
 
-      <textarea placeholder="Escribe el texto..."
+      <textarea 
+      placeholder="Escribe el texto..."
       onChance = {handleChangeTextarea}
       value={Text}
       ></textarea>
@@ -51,18 +52,20 @@ const App = () => {
           />
           excluir espacios
         </label>
-          <label >
-            <input 
-              type = "checkbox"
-              checked = {limitCharacter}
-              onChance = {handleChangeInputLimit}
+        <label >
+          <input 
+            type = "checkbox"
+            checked = {limitCharacter}
+            onChance = {handleChangeInputLimit}
           />
           limite de Caracteres
-        </label> {
-        limitCharacter && <input 
-        type="number"
-        value = {limitValue}
-        onChance = {(e) => setLimitValue(e.target.value)}
+        </label> 
+        {
+        limitCharacter && 
+        <input 
+          type="number"
+          value = {limitValue}
+          onChance = {(e) => setLimitValue(e.target.value)}
          /> }
       </div>
       <p>Cantidad de caracteres: {Character}</p>
