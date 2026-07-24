@@ -50,7 +50,7 @@ const App = () => {
           <input 
           type = "checkbox"
           checked = {excludeSpaces}
-          onChance = {() => setExcludeSpaces(!excludeSpaces)}
+          onChange = {() => setExcludeSpaces(!excludeSpaces)}
           />
           excluir espacios
         </label>

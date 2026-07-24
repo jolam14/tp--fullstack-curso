@@ -1,5 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*:root{
+    --fondo_Principal:#12131A ;
+    --fondo_Cards: #1c1f2a;
+    --texto_Principal: #f2f2f7;
+    --texto_Secundario: #b4b7c9;
+    --cart_Violeta: #0f4d31; /* color del ajuste para encanjar con la imagen*/
+    --cart_Violeta1: #c99dff;/* color que no arrojo la ia */
+    --cart_Naranja: #ffa408; /* color del ajuste para encanjar con la imagen*/
+    /* --cart_Naranja: #ffb21e, color original  */
+    --cart_Coral: #ff7869; /* color del ajuste para encanjar con la imagen*/
+    /* --cart_Coral: #ff8a65; color original */
+    --barra_Progreso: #d19bff;
+    --bordes_Sutiles: #2a2d3a;
+}
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* color para mejor visual */
+  color: red;  
+}
+ body {
+    background-color: var(--fondo_Principal);
+    font-family: "Inter", sans-serif;
+    padding: 0%;
+    margin: 0;
+ }
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--texto_Principal);
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto 40px auto;  
 }
