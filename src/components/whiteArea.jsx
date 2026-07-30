@@ -1,7 +1,8 @@
 const WhiteArea = ({ handleChangeTextArea, text }) => {
   return (
     <textarea
-      placeholder="Escribe el texto..."
+      className="cuadro-texto"
+      placeholder="Type your text..."
       onChange={handleChangeTextArea}
       value={text}
     ></textarea>

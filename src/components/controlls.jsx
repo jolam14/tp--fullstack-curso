@@ -7,30 +7,31 @@ const Controls = ({
   handleLimitValueChange
 }) => {
   return (
-    <div>
-      <label>
+    <div className="checkbox_Box">
+      <h3>
         <input
           type="checkbox"
           checked={excludeSpaces}
           onChange={onToggleExcludeSpaces}
         />
-        excluir espacios
-      </label>
-      <label>
+        Exclude Spaces
+      </h3>
+      <h3>
         <input
           type="checkbox"
           checked={limitCharacter}
           onChange={handleChangeInputLimit}
         />
-        limite de Caracteres
-      </label>
-      {limitCharacter &&
-        <input
-          type="number"
-          min="1"
-          value={limitValue}
-          onChange={handleLimitValueChange}
-        />}
+        Set Character Limit
+        {limitCharacter &&
+          <input
+            type="number"
+            min="1"
+            value={limitValue}
+            onChange={handleLimitValueChange}
+            style={{ width: "60px", marginLeft: "8px" }}
+          />}
+      </h3>
     </div>
   )
 }

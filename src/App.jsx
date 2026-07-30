@@ -1,15 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Header } from "./components/Header.jsx"
 import { WhiteArea } from "./components/whiteArea.jsx"
 import { Controls } from "./components/controlls.jsx"
-import { Stats } from "./components/stast.jsx"
+import { Cards } from "./components/stast.jsx"
 import { Letters } from "./components/letters.jsx"
+import './index.css'
 
 const App = () => {
   const [text, setText] = useState("esto es texto de prueba se puede borrar")
   const [excludeSpaces, setExcludeSpaces] = useState(false)
   const [limitCharacter, setLimitCharacter] = useState(false)
   const [limitValue, setLimitValue] = useState(10)
+  const [theme, setTheme] = useState("dark")
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme(prev => (prev === "dark" ? "light" : "dark"))
 
   const characters = excludeSpaces ? text.replace(/\s/g, "").length : text.length
   const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length
@@ -19,10 +27,10 @@ const App = () => {
   const minutesEstimate = words / wordsPerMinute
   const secondsEstimate = Math.max(1, Math.ceil(minutesEstimate * 60))
   const readingTimeText = words === 0
-    ? "0 min"
-    : minutesEstimate < 1
-      ? `${secondsEstimate} seg`
-      : `${Math.ceil(minutesEstimate)} min`
+  ? "0 min"
+  : minutesEstimate < 1
+    ? `${secondsEstimate} sec`
+    : `${Math.ceil(minutesEstimate)} min`
 
   const handleChangeArea = (e) => {
     const value = e.target.value
@@ -66,30 +74,33 @@ const App = () => {
     .sort((a, b) => b.amount - a.amount)
 
   return (
-    <main>
-      <Header />
-      <h2>Analyse your text <br /> in real-time</h2>
+    <div className="content">
+      <Header theme={theme} toggleTheme={toggleTheme} />
+      <h2>Analyze your text <br /> in real-time</h2>
 
       <WhiteArea handleChangeTextArea={handleChangeArea} text={text} />
 
-      <Controls
-        excludeSpaces={excludeSpaces}
-        onToggleExcludeSpaces={() => setExcludeSpaces(!excludeSpaces)}
-        limitCharacter={limitCharacter}
-        handleChangeInputLimit={handleChangeInputLimit}
-        limitValue={limitValue}
-        handleLimitValueChange={handleLimitValueChange}
-      />
+      <div className="fila_Text_Bottom">
+        <Controls
+          excludeSpaces={excludeSpaces}
+          onToggleExcludeSpaces={() => setExcludeSpaces(!excludeSpaces)}
+          limitCharacter={limitCharacter}
+          handleChangeInputLimit={handleChangeInputLimit}
+          limitValue={limitValue}
+          handleLimitValueChange={handleLimitValueChange}
+        />
+        <span>Approx Reading Time &lt; {readingTimeText}</span>
+      </div>
 
-      <Stats
-        characters={characters}
-        words={words}
-        sentences={sentences}
-        readingTimeText={readingTimeText}
-      />
+      <div className="tarjetas-contenedor">
+        <Cards characters={characters} words={words} sentences={sentences} />
 
-      <Letters sortLetters={sortedLetters} />
-    </main>
+        <div className="densidad-contenedor">
+          <h3 className="titulo-densidad">Letter Density</h3>
+          <Letters sortLetters={sortedLetters} />
+        </div>
+      </div>
+    </div>
   )
 }
 export { App }
