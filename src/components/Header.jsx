@@ -1,4 +1,8 @@
+import { useLanguage } from "../context/LanguageContext.jsx"
+
 const Header = ({ theme, toggleTheme }) => {
+  const { language, toggleLanguage, t } = useLanguage()
+
   return (
     <header className="bar">
       <div className="logo_Grupo">
@@ -6,11 +10,12 @@ const Header = ({ theme, toggleTheme }) => {
           <ellipse cx="25" cy="18" rx="18" ry="10" fill="#c99dff" />
           <ellipse cx="25" cy="32" rx="18" ry="10" fill="#7c3aed" />
         </svg>
-        <h1>Character Counter</h1>
+        <h1>{t('title')}</h1>
       </div>
-      <button onClick={toggleTheme}>
-        {theme === "dark" ? "🌙" : "☀️"}
-      </button>
+      <div style={{ display: "flex", gap: "8px" }}>
+        <button onClick={toggleLanguage}>{language === "en" ? "ES" : "EN"}</button>
+        <button onClick={toggleTheme}>{theme === "dark" ? "🌙" : "☀️"}</button>
+      </div>
     </header>
   )
 }

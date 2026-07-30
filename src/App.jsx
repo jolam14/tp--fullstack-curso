@@ -5,6 +5,7 @@ import { Controls } from "./components/controlls.jsx"
 import { Cards } from "./components/stast.jsx"
 import { Letters } from "./components/letters.jsx"
 import './index.css'
+import {themeContextext} from "./context/themeContext.jsx"
 
 const App = () => {
   const [text, setText] = useState("esto es texto de prueba se puede borrar")
