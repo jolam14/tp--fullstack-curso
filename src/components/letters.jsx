@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { ProgressBar } from "./progressbar.jsx"
+import { useLanguage } from "../context/themeContext.jsx"
 
 const Letters = ({ sortLetters }) => {
   const [showAll, setShowAll] = useState(false)
   const visibleLetters = showAll ? sortLetters : sortLetters.slice(0, 5)
-    
-  if (sortLetters.length === 0) return <p>No letters to analyze.</p>
+  const { t } = useLanguage()
+
+  if (sortLetters.length === 0) return <p>{t('noLetters')}</p>
 
   return (
     <>
@@ -18,7 +20,7 @@ const Letters = ({ sortLetters }) => {
       ))}
       {sortLetters.length > 5 && (
         <button type="button" className="ver-mas-btn" onClick={() => setShowAll(!showAll)}>
-          {showAll ? "See less ▲" : "See more ▼"}
+          {showAll ? t('seeLess') + ' ▲' : t('seeMore') + ' ▼'}
         </button>
       )}
     </>

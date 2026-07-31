@@ -1,8 +1,11 @@
+import { useLanguage } from "../context/themeContext.jsx"
+
 const WhiteArea = ({ handleChangeTextArea, text }) => {
+  const { t } = useLanguage()
   return (
     <textarea
       className="cuadro-texto"
-      placeholder="Type your text..."
+      placeholder={t('placeholder')}
       onChange={handleChangeTextArea}
       value={text}
     ></textarea>

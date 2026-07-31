@@ -5,6 +5,7 @@ import { Controls } from "./components/controlls.jsx"
 import { Cards } from "./components/stast.jsx"
 import { Letters } from "./components/letters.jsx"
 import './index.css'
+import { useLanguage } from "./context/themeContext.jsx"
 
 const App = () => {
   const [text, setText] = useState("esto es texto de prueba se puede borrar")
@@ -23,14 +24,16 @@ const App = () => {
   const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length
   const sentences = text.trim() === "" ? 0 : text.split(/[.!?]/).filter(s => s.trim() !== "").length
 
+  const { t } = useLanguage()
+
   const wordsPerMinute = 200
   const minutesEstimate = words / wordsPerMinute
   const secondsEstimate = Math.max(1, Math.ceil(minutesEstimate * 60))
   const readingTimeText = words === 0
-  ? "0 min"
-  : minutesEstimate < 1
-    ? `${secondsEstimate} sec`
-    : `${Math.ceil(minutesEstimate)} min`
+    ? `0 ${t('min')}`
+    : minutesEstimate < 1
+      ? `${secondsEstimate} ${t('sec')}`
+      : `${Math.ceil(minutesEstimate)} ${t('min')}`
 
   const handleChangeArea = (e) => {
     const value = e.target.value
@@ -76,7 +79,7 @@ const App = () => {
   return (
     <div className="content">
       <Header theme={theme} toggleTheme={toggleTheme} />
-      <h2>Analyze your text <br /> in real-time</h2>
+      <h2>{t('heading')} <br /> {t('headingBreak')}</h2>
 
       <WhiteArea handleChangeTextArea={handleChangeArea} text={text} />
 
@@ -89,7 +92,7 @@ const App = () => {
           limitValue={limitValue}
           handleLimitValueChange={handleLimitValueChange}
         />
-        <span>Approx Reading Time &lt; {readingTimeText}</span>
+        <span>{t('readingTime')} {readingTimeText}</span>
       </div>
 
       <div className="tarjetas-contenedor">

@@ -1,3 +1,5 @@
+import { useLanguage } from "../context/themeContext.jsx"
+
 const Controls = ({
   excludeSpaces,
   onToggleExcludeSpaces,
@@ -6,6 +8,7 @@ const Controls = ({
   limitValue,
   handleLimitValueChange
 }) => {
+  const { t } = useLanguage()
   return (
     <div className="checkbox_Box">
       <h3>
@@ -14,7 +17,7 @@ const Controls = ({
           checked={excludeSpaces}
           onChange={onToggleExcludeSpaces}
         />
-        Exclude Spaces
+        {t('excludeSpaces')}
       </h3>
       <h3>
         <input
@@ -22,7 +25,7 @@ const Controls = ({
           checked={limitCharacter}
           onChange={handleChangeInputLimit}
         />
-        Set Character Limit
+        {t('setLimit')}
         {limitCharacter &&
           <input
             type="number"
