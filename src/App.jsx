@@ -99,7 +99,7 @@ const App = () => {
         <Cards characters={characters} words={words} sentences={sentences} />
 
         <div className="densidad-contenedor">
-          <h3 className="titulo-densidad">Letter Density</h3>
+          <h3 className="titulo-densidad">{t('letterDensity')}</h3>
           <Letters sortLetters={sortedLetters} />
         </div>
       </div>

@@ -32,7 +32,7 @@ const translations = {
     totalCharacter: "Total de caracteres",
     wordCount: "Cantidad de palabras",
     sentenceCount: "Cantidad de oraciones",
-    letterDensity: "Densidad de letras",
+    letterDensity: "veces que se repite una letras",
     noLetters: "No hay letras para analizar.",
     seeMore: "Ver más",
     seeLess: "Ver menos"
