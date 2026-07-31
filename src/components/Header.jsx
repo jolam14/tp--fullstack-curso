@@ -1,5 +1,4 @@
-import { useLanguage } from "../context/LanguageContext.jsx"
-
+import { themeContextext } from "..themeContext.jsx";
 const Header = ({ theme, toggleTheme }) => {
   const { language, toggleLanguage, t } = useLanguage()
 
